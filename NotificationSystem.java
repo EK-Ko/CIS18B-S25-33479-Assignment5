@@ -104,7 +104,9 @@ public class NotificationSystem {
         smsObserver.update(orderSMS);
 
         //type erasure ex.
-        if (welcomeEmail instanceof Notification<?>) {
+        // At runtime, Java erases the generic type information,
+        // so you cannot use instanceof with parameterized types.
+        if (welcomeEmail instanceof Notification<?>) { //this will always be true
             System.out.println("The generic type is erased");
         }
     }
